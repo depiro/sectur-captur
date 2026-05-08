@@ -2,7 +2,7 @@
 
 Este repositorio contiene la documentación de referencia del proyecto **Captur**, sistema de capacitación turística de la Secretaría de Turismo de Jujuy, Argentina.
 
-Su propósito es ser la fuente de verdad compartida entre los miembros del equipo y las herramientas de AI (Claude Code, Lovable, Cursor). Todo lo que está acá se leyó, se discutió y se acordó antes de que alguien lo implementara. No se modifica durante la ejecución — se modifica entre el diseñador y el developer antes de ejecutar.
+Su propósito es ser la fuente de verdad compartida entre los miembros del equipo y las herramientas de AI (Claude Code, Claude, Cursor). Todo lo que está acá se leyó, se discutió y se acordó antes de que alguien lo implementara. No se modifica durante la ejecución — se modifica entre el diseñador y el developer antes de ejecutar.
 
 ---
 
