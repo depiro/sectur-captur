@@ -1,10 +1,7 @@
-export default function Page() {
+export default function CapacitacionDetallePage() {
   return (
-    <div className="p-8">
-      <h1 className="text-heading-2">Detalle de capacitación</h1>
-      <p className="text-body-md mt-2" style={{ color: "var(--color-text-secondary)" }}>
-        Esta página está pendiente de implementación.
-      </p>
+    <div style={{ padding: "28px 32px" }}>
+      <p className="text-body-md" style={{ color: "var(--color-text-secondary)" }}>Próximamente</p>
     </div>
   )
 }

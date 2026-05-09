@@ -1,7 +1,4 @@
-import Image from "next/image"
-
 type LogoSize = "sm" | "md" | "lg" | "xl"
-type LogoContext = "light" | "dark"
 
 const heightMap: Record<LogoSize, number> = {
   sm: 28,
@@ -12,29 +9,18 @@ const heightMap: Record<LogoSize, number> = {
 
 interface CapturLogoProps {
   size?: LogoSize
-  context?: LogoContext
   className?: string
 }
 
-export function CapturLogo({
-  size = "md",
-  context = "light",
-  className,
-}: CapturLogoProps) {
+export function CapturLogo({ size = "md", className }: CapturLogoProps) {
   const height = heightMap[size]
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src="/images/logo-captur.png"
       alt="Captur"
-      height={height}
-      width={0}
-      style={{
-        height,
-        width: "auto",
-        mixBlendMode: context === "light" ? "multiply" : undefined,
-      }}
+      style={{ height, width: "auto", display: "block" }}
       className={className}
-      priority
     />
   )
 }

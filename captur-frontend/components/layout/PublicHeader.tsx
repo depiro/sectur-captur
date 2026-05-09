@@ -28,7 +28,7 @@ export function PublicHeader() {
       <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 md:px-8">
         {/* Logo */}
         <Link href="/" aria-label="Captur — Inicio">
-          <CapturLogo size="md" context="light" />
+          <CapturLogo size="md" />
         </Link>
 
         {/* Nav — desktop */}
@@ -97,7 +97,7 @@ export function PublicHeader() {
             <Menu size={22} />
           </SheetTrigger>
           <SheetContent side="left" className="w-72 p-6 flex flex-col gap-6">
-            <CapturLogo size="sm" context="light" />
+            <CapturLogo size="sm" />
             <nav className="flex flex-col gap-4">
               {navLinks.map(({ href, label }) => {
                 const isActive = pathname === href

@@ -1,10 +1,32 @@
-export default function Page() {
+"use client"
+
+import { useRouter } from "next/navigation"
+import { ShieldCheck, Plus } from "lucide-react"
+import { CapturButton } from "@/components/shared/CapturButton"
+import { EmptyState } from "@/components/shared/EmptyState"
+
+export default function AdministradoresPage() {
+  const router = useRouter()
+
   return (
-    <div className="p-8">
-      <h1 className="text-heading-2">Administradores</h1>
-      <p className="text-body-md mt-2" style={{ color: "var(--color-text-secondary)" }}>
-        Esta página está pendiente de implementación.
-      </p>
+    <div style={{ padding: "28px 32px" }}>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-heading-2" style={{ color: "var(--color-text-primary)" }}>
+          Administradores
+        </h1>
+        <CapturButton
+          variant="primary"
+          size="sm"
+          onClick={() => router.push("/backoffice/administradores/nuevo")}
+        >
+          <Plus size={14} />
+          Nuevo administrador
+        </CapturButton>
+      </div>
+      <EmptyState
+        icon={ShieldCheck}
+        title="No hay administradores"
+      />
     </div>
   )
 }
