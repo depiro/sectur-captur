@@ -1,0 +1,201 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Tailwind v4 @theme — Captur brand → theme tokens ────────────────── */
+@theme inline {
+  --font-sans:                var(--font-inter);
+  --color-background:         var(--background);
+  --color-foreground:         var(--foreground);
+  --color-ring:               var(--ring);
+  --color-border:             var(--border);
+  --color-input:              var(--input);
+  --color-primary:            var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary:          var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:              var(--muted);
+  --color-muted-foreground:   var(--muted-foreground);
+  --color-accent:             var(--accent);
+  --color-accent-foreground:  var(--accent-foreground);
+  --color-destructive:        var(--destructive);
+  --color-card:               var(--card);
+  --color-card-foreground:    var(--card-foreground);
+  --color-popover:            var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-sidebar:            var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary:    var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:     var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border:     var(--sidebar-border);
+  --color-sidebar-ring:       var(--sidebar-ring);
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
+}
+
+/* ─── Typography utilities ─────────────────────────────────────────────── */
+@utility text-display {
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+@utility text-heading-1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+@utility text-heading-2 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+@utility text-heading-3 {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+@utility text-heading-4 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+@utility text-body-lg {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+@utility text-body-sm {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+@utility text-label {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+@utility text-button {
+  font-size: 0.875rem;
+  line-height: 1;
+  font-weight: 500;
+}
+
+/* ─── Design System + shadcn tokens — inside @layer base so Turbopack picks them up ── */
+@layer base {
+  :root {
+    /* Brand */
+    --color-brand-teal:        #2A9D9D;
+    --color-brand-teal-dark:   #1F7A7A;
+    --color-brand-teal-bg:     rgba(42, 157, 157, 0.1);
+    --color-brand-orange:      #E8762C;
+    --color-brand-orange-bg:   rgba(232, 118, 44, 0.1);
+    --color-brand-purple:      #7B5EA7;
+    --color-brand-purple-bg:   rgba(123, 94, 167, 0.1);
+    --color-brand-lime:        #8DC63F;
+    --color-brand-lime-bg:     rgba(141, 198, 63, 0.1);
+
+    /* Semantic */
+    --color-success:           #16A34A;
+    --color-success-bg:        rgba(22, 163, 74, 0.1);
+    --color-error:             #DC2626;
+    --color-error-bg:          rgba(220, 38, 38, 0.1);
+    --color-warning:           #D97706;
+    --color-warning-bg:        rgba(217, 119, 6, 0.1);
+    --color-info:              #2563EB;
+    --color-info-bg:           rgba(37, 99, 235, 0.1);
+
+    /* Neutral */
+    --color-background:        #FFFFFF;
+    --color-surface:           #F9FAFB;
+    --color-border:            #E5E7EB;
+    --color-border-strong:     #D1D5DB;
+    --color-text-primary:      #111827;
+    --color-text-secondary:    #6B7280;
+    --color-text-disabled:     #9CA3AF;
+    --color-overlay:           rgba(0, 0, 0, 0.5);
+
+    /* Sidebar */
+    --color-sidebar-bg:              #FFFFFF;
+    --color-sidebar-border:          #E5E7EB;
+    --color-sidebar-text:            #374151;
+    --color-sidebar-text-muted:      #9CA3AF;
+    --color-sidebar-icon:            #6B7280;
+    --color-sidebar-hover-bg:        #F3F4F6;
+    --color-sidebar-active-bg:       rgba(42, 157, 157, 0.08);
+    --color-sidebar-active-text:     #2A9D9D;
+    --color-sidebar-active-icon:     #2A9D9D;
+    --color-sidebar-active-border:   #2A9D9D;
+    --color-sidebar-group-label:     #9CA3AF;
+
+    /* Spacing */
+    --space-1:  4px;   --space-2:  8px;   --space-3:  12px;
+    --space-4:  16px;  --space-5:  20px;  --space-6:  24px;
+    --space-8:  32px;  --space-10: 40px;  --space-12: 48px;
+    --space-16: 64px;  --space-24: 96px;
+
+    /* Border radius */
+    --radius-sm:   4px;
+    --radius-md:   8px;
+    --radius-lg:   12px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm:    0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md:    0 4px 6px rgba(0,0,0,0.07);
+    --shadow-lg:    0 10px 15px rgba(0,0,0,0.1);
+    --shadow-focus: 0 0 0 3px rgba(42,157,157,0.3);
+
+    /* shadcn/ui tokens — overridden to Captur brand */
+    --background:             oklch(1 0 0);
+    --foreground:             oklch(0.13 0 0);
+    --card:                   oklch(1 0 0);
+    --card-foreground:        oklch(0.13 0 0);
+    --popover:                oklch(1 0 0);
+    --popover-foreground:     oklch(0.13 0 0);
+    --primary:                oklch(0.612 0.104 195.8);
+    --primary-foreground:     oklch(1 0 0);
+    --secondary:              oklch(0.97 0 0);
+    --secondary-foreground:   oklch(0.13 0 0);
+    --muted:                  oklch(0.97 0 0);
+    --muted-foreground:       oklch(0.45 0 0);
+    --accent:                 oklch(0.97 0 0);
+    --accent-foreground:      oklch(0.13 0 0);
+    --destructive:            oklch(0.577 0.245 27.325);
+    --border:                 oklch(0.922 0 0);
+    --input:                  oklch(0.922 0 0);
+    --ring:                   oklch(0.612 0.104 195.8);
+    --radius:                 0.5rem;
+    --sidebar:                oklch(1 0 0);
+    --sidebar-foreground:     oklch(0.23 0 0);
+    --sidebar-primary:        oklch(0.612 0.104 195.8);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent:         oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.13 0 0);
+    --sidebar-border:         oklch(0.922 0 0);
+    --sidebar-ring:           oklch(0.612 0.104 195.8);
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  html {
+    @apply antialiased;
+  }
+}

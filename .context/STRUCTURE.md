@@ -2,7 +2,41 @@
 
 This file answers one question: **where does this go?**
 
-Each section describes what type of content belongs in each folder, what doesn't belong there, and a decision criterion for edge cases.
+Each section describes what type of content belongs in each folder and file, what doesn't belong there, and a decision criterion for edge cases.
+
+---
+
+## Full structure
+
+```
+.context/
+│
+├── design-system/
+│   ├── ui/
+│   │   ├── colors.md
+│   │   ├── radius.md
+│   │   ├── shadows.md
+│   │   ├── spacing.md
+│   │   ├── typography.md
+│   │   └── variables.md
+│   │
+│   ├── patterns/
+│   │
+│   ├── components.md
+│   ├── foundations.md
+│   └── scaffold.md
+│
+├── specs/
+│
+├── standards/
+│   ├── captur-architecture-v1.md
+│   ├── design-workflow.md
+│   ├── naming-conventions.md
+│   └── ui-standards.md
+│
+├── README.md
+└── STRUCTURE.md
+```
 
 ---
 
@@ -10,36 +44,58 @@ Each section describes what type of content belongs in each folder, what doesn't
 
 Everything that defines **how the project looks**. This is the visual source of truth — any aesthetic decision that has already been made lives here.
 
-### `foundations/`
+---
 
-The base tokens of the system: the primitive values everything else derives from. A token is a named value with semantics — not a loose hex color, but a color with a name that says when to use it.
+### `design-system/ui/`
+
+The primitive token files. Each file covers one dimension of the visual system. These are the lowest-level values — everything else in the design system references them.
 
 | File | Contents |
 |---|---|
-| `colors.md` | Full palette with semantics: what each color means and when to use it |
-| `typography.md` | Type family, size scale, weights, and when to use each level |
-| `spacing.md` | Spacing system, the 4px grid, and how to apply it |
-| `shadows.md` | Shadows by elevation level and focus state |
-| `radius.md` | Border radius by level and when to use each |
-| `variables.md` | The full `globals.css` with all CSS variables for the project |
+| `colors.md` | Full palette with semantics: brand, semantic, and neutral colors. What each color means and when to use it. |
+| `typography.md` | Type family (Inter), size scale, weights, line heights, and when to use each level. |
+| `spacing.md` | The 4px spacing grid and all spacing tokens from `--space-1` to `--space-24`. |
+| `shadows.md` | Shadow tokens by elevation level (`--shadow-sm`, `--shadow-md`, `--shadow-lg`) and the focus ring (`--shadow-focus`). |
+| `radius.md` | Border radius tokens (`--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-full`) and when to use each. |
+| `variables.md` | The complete `globals.css` with every CSS variable defined for the project. The single source of truth for all tokens. |
 
-**Does not belong here:** components, interaction patterns, user flow decisions.
+**Does not belong here:** components, layout rules, interaction patterns, user flow decisions.
 
-### `components.md`
+---
 
-All UI Kit components: what variants exist, when to use each one, and what data they expect. A component is a reusable piece — `TrainingCard`, `EnrollmentStatusBadge`, `CapturButton`.
+### `design-system/foundations.md`
+
+Behavioral and structural rules that sit above the tokens but below the components. This file defines how the system works — not just how it looks.
+
+Covers: grid and breakpoints, component behavior rules, interaction models, date formats, terminology, and the decision log explaining why key choices were made.
+
+Think of it as the bridge between raw tokens (`ui/`) and built components (`components.md`).
+
+**Does not belong here:** the token values themselves (those go in `ui/`), individual component specifications (those go in `components.md`).
+
+---
+
+### `design-system/components.md`
+
+All UI Kit components: what variants exist, when to use each one, what data they expect, and their visual and behavioral rules.
+
+A component is a reusable piece — `TrainingCard`, `EnrollmentStatusBadge`, `CapturButton`, `BackofficeSidebar`.
 
 **Does not belong here:** how components combine to build a screen — that goes in `patterns/`.
 
-### `patterns/`
+---
 
-How components combine to solve recurring situations. A pattern is not a component — it's a solution to a UX problem that appears across multiple screens.
+### `design-system/patterns/`
 
-Examples of what goes here: how to build a form with validation, how to structure a table with pagination and actions, how to present an empty state with a primary action.
+How components combine to solve recurring UX situations. A pattern is not a component — it's a solution to a problem that appears across multiple screens.
 
-**Does not belong here:** tokens (go in `foundations/`), individual components (go in `components.md`), interaction behaviors (go in `standards/ui-standards.md`).
+Examples of what goes here: how to build a validated form, how to structure a table with pagination and row actions, how to present an empty state with a primary action.
 
-### `scaffold.md`
+**Does not belong here:** tokens (go in `ui/`), individual components (go in `components.md`), platform-wide interaction behaviors (go in `standards/ui-standards.md`).
+
+---
+
+### `design-system/scaffold.md`
 
 The folder and file structure of the frontend. Where each component, page, hook, and TypeScript type lives. It's the project map so no one has to guess where to create a new file.
 
@@ -49,41 +105,26 @@ The folder and file structure of the frontend. Where each component, page, hook,
 
 ## `.context/standards/`
 
-Everything that defines **how we work** on the project. It doesn't describe what things look like — it describes how decisions are made, how things are named, and how the interface behaves.
+Everything that defines **how we work** on the project. Not what things look like — how decisions are made, how things are named, and how the interface behaves.
 
-### `naming-conventions.md`
+| File | Contents |
+|---|---|
+| `naming-conventions.md` | Shared names across DB, backend, frontend, and UI. The name originates in the DB table and propagates upward. |
+| `ui-standards.md` | How the interface behaves: when to use toast vs inline error, loading states, empty states, destructive actions. |
+| `design-workflow.md` | How the designer and developer work together. Phase 0 / Phase 1 process, sync moments, documentation responsibilities. |
+| `captur-architecture-v1.md` | System architecture decisions and technical constraints. |
 
-The shared names across database, backend, frontend, and UI. The name originates in the database table and propagates upward without inventing synonyms at each layer.
-
-**Goes here:** the entity table with names at each layer, derivation rules, cross-layer translation.
-
-**Does not belong here:** design tokens, file structure, component behavior.
-
-### `ui-standards.md`
-
-How the interface behaves: when to use a toast vs inline error, how to show a loading state, what an empty state includes, how to confirm a destructive action. These are behavior decisions that apply across the entire platform.
-
-**Goes here:** any UI behavior decision that was made and shouldn't be revisited for the next component.
-
-**Does not belong here:** how something looks (that goes in `design-system/`), specific user flows (that goes in `specs/`).
-
-### `design-workflow.md`
-
-How the designer and developer work together. The Phase 0 and Phase 1 process, what each person documents and when, how they stay in sync.
-
-**Goes here:** the work process, roles, sync moments.
-
-**Does not belong here:** technical decisions, design decisions — those go in their respective files.
+**Does not belong here:** visual tokens (go in `design-system/ui/`), specific user flows (go in `specs/`).
 
 ---
 
 ## `.context/specs/`
 
-The project's user flows. Filled in during Phase 1, flow by flow, before anyone starts implementing.
+User flows for the project. Filled in during Phase 1, one file per flow, before anyone starts implementing.
 
-Each file describes a flow: what the user wants to accomplish, the steps, the screens involved, the backend requirements, UX constraints, and design references.
+Each file describes: what the user wants to accomplish, the steps, the screens involved, backend requirements, UX constraints, and design references.
 
-The internal structure is one folder per module and one file per flow:
+Structure: one subfolder per module, one file per flow.
 
 ```
 specs/
@@ -97,9 +138,9 @@ specs/
     └── KER-XX-create-training.md
 ```
 
-**Goes here:** user flows using the template defined in `design-workflow.md`.
+**Goes here:** user flows using the template defined in `standards/design-workflow.md`.
 
-**Does not belong here:** general design decisions (go in `design-system/`), UI behaviors that apply platform-wide (go in `ui-standards.md`).
+**Does not belong here:** general design decisions (go in `design-system/`), platform-wide UI behaviors (go in `standards/ui-standards.md`).
 
 ---
 
@@ -107,11 +148,12 @@ specs/
 
 When it's unclear where something goes, apply these questions in order:
 
-1. **Is it a primitive visual value?** → `design-system/foundations/`
-2. **Is it a reusable component?** → `design-system/components.md`
-3. **Is it a combination of components that solves a recurring problem?** → `design-system/patterns/`
-4. **Is it a decision about how the UI behaves on any screen?** → `standards/ui-standards.md`
-5. **Is it a naming convention across layers?** → `standards/naming-conventions.md`
-6. **Is it specific to a user flow?** → `specs/[module]/[flow].md`
+1. **Is it a primitive visual value (color, size, spacing)?** → `design-system/ui/`
+2. **Is it a behavioral or structural rule that applies across the system?** → `design-system/foundations.md`
+3. **Is it a reusable component specification?** → `design-system/components.md`
+4. **Is it a combination of components solving a recurring UX problem?** → `design-system/patterns/`
+5. **Is it a decision about how the UI behaves on any screen?** → `standards/ui-standards.md`
+6. **Is it a naming convention across layers?** → `standards/naming-conventions.md`
+7. **Is it specific to a user flow?** → `specs/[module]/[flow].md`
 
-If still unclear after these questions, the tiebreaker is: **does it change when the design changes, or when the flow changes?** The former goes in `design-system/`, the latter in `specs/`.
+If still unclear after these questions, the tiebreaker: **does it change when the design changes, or when the flow changes?** The former goes in `design-system/`, the latter in `specs/`.
