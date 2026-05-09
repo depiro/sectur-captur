@@ -1,70 +1,70 @@
-# Captur — Repositorio de contexto
+# Captur — Context Repository
 
-Este repositorio contiene la documentación de referencia del proyecto **Captur**, sistema de capacitación turística de la Secretaría de Turismo de Jujuy, Argentina.
+This repository contains the reference documentation for the **Captur** project, a tourism training system for the Secretaría de Turismo de Jujuy, Argentina.
 
-Su propósito es ser la fuente de verdad compartida entre los miembros del equipo y las herramientas de AI (Claude Code, Claude, Cursor). Todo lo que está acá se leyó, se discutió y se acordó antes de que alguien lo implementara. No se modifica durante la ejecución — se modifica entre el diseñador y el developer antes de ejecutar.
+Its purpose is to serve as the shared source of truth between team members and AI tools (Claude Code, Claude, Cursor). Everything here has been read, discussed, and agreed upon before anyone implemented it. It is not modified during execution — it is modified between the designer and the developer before execution begins.
 
 ---
 
-## Estructura
+## Structure
 
 ```
 .context/
 ├── design-system/
-│   ├── foundations.md          Tokens de diseño: colores, tipografía, spacing, variables CSS
-│   ├── components.md           Componentes del UI Kit: variantes, estados, cuándo usar cada uno
-│   └── scaffold.md             Estructura de carpetas y archivos del frontend
+│   ├── foundations.md          Design decisions: layout, interactions, component behavior
+│   ├── components.md           UI Kit components: variants, states, when to use each
+│   └── scaffold.md             Frontend folder and file structure
 │
 ├── standards/
-│   ├── naming-conventions.md   Nombres compartidos entre DB, backend, frontend y UI
-│   ├── ui-standards.md         Comportamiento de la interfaz: toasts, errores, loading, estados vacíos
-│   └── design-workflow.md      Cómo trabajan juntos el diseñador y el developer
+│   ├── naming-conventions.md   Shared names across DB, backend, frontend, and UI
+│   ├── ui-standards.md         Interface behavior: toasts, errors, loading, empty states
+│   └── design-workflow.md      How the designer and developer work together
 │
-├── specs/                      Flujos de usuario — se completa en Fase 1, flujo por flujo
+├── specs/                      User flows — filled in during Phase 1, flow by flow
 │   ├── trainings/
 │   ├── enrollments/
 │   └── backoffice/
 │
-└── README.md                   Este archivo
+└── README.md                   This file
 ```
 
 ---
 
-## Cómo leer este repo
+## How to read this repo
 
-### Si sos una herramienta de AI generando UI
+### If you are an AI tool generating UI
 
-Leé en este orden:
+Read in this order:
 
-1. `design-system/foundations.md` — variables CSS, paleta, tipografía. Todo color y espaciado sale de acá.
-2. `design-system/components.md` — componentes existentes. Antes de crear uno nuevo, verificá si ya existe.
-3. `standards/naming-conventions.md` — cómo se llaman las cosas en cada capa. El nombre de la tabla determina el nombre del componente.
-4. `standards/ui-standards.md` — cuándo usar toast vs inline, cómo se comporta un botón en loading, qué incluye un estado vacío.
-5. `specs/[módulo]/[flujo].md` — el flujo de usuario específico que vas a implementar.
+1. `design-system/foundations.md` — CSS variables, palette, typography. All colors and spacing come from here.
+2. `design-system/components.md` — existing components. Before creating a new one, check if it already exists.
+3. `standards/naming-conventions.md` — how things are named at each layer. The table name determines the component name.
+4. `standards/ui-standards.md` — when to use toast vs inline, how a button behaves in loading state, what an empty state includes.
+5. `specs/[module]/[flow].md` — the specific user flow you are about to implement.
 
-### Si sos una herramienta de AI generando código de backend o lógica
+### If you are an AI tool generating backend code or logic
 
-1. `standards/naming-conventions.md` — tipos TypeScript, nombres de servicios, rutas de API.
-2. `design-system/scaffold.md` — dónde vive cada archivo en el frontend.
-3. `specs/[módulo]/[flujo].md` — el flujo que tenés que implementar, con endpoints y lógica de negocio.
+1. `standards/naming-conventions.md` — TypeScript types, service names, API routes.
+2. `design-system/scaffold.md` — where each file lives in the frontend.
+3. `specs/[module]/[flow].md` — the flow you need to implement, with endpoints and business logic.
 
-### Si sos el diseñador
+### If you are the designer
 
-1. `design-system/foundations.md` — tokens base para configurar Lovable.
-2. `design-system/components.md` — lo que ya existe y no hay que volver a crear.
-3. `standards/design-workflow.md` — el proceso de trabajo, qué documentar después de cada sesión.
+1. `design-system/foundations.md` — base tokens for configuring Lovable.
+2. `design-system/components.md` — what already exists and does not need to be recreated.
+3. `standards/design-workflow.md` — the working process, what to document after each session.
 
-### Si sos el developer
+### If you are the developer
 
-1. `standards/design-workflow.md` — cómo documentar un flujo de usuario antes de la reunión con el diseñador.
-2. `design-system/scaffold.md` — estructura de archivos del proyecto.
-3. `specs/[módulo]/` — flujos del módulo que estás implementando.
+1. `standards/design-workflow.md` — how to document a user flow before the designer meeting.
+2. `design-system/scaffold.md` — project file structure.
+3. `specs/[module]/` — flows for the module you are implementing.
 
 ---
 
-## Stack del proyecto
+## Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 |---|---|
 | Frontend | Next.js + TypeScript |
 | UI | Tailwind CSS + shadcn/ui |
@@ -73,11 +73,11 @@ Leé en este orden:
 
 ---
 
-## Terminología
+## Terminology
 
-En toda la UI y en toda la documentación:
+Throughout the UI and all documentation:
 
-| Usar | No usar |
+| Use | Do not use |
 |---|---|
 | Capacitación | Curso |
 | Beneficiario | Alumno / Usuario |
@@ -86,20 +86,20 @@ En toda la UI y en toda la documentación:
 
 ---
 
-## Estado del proyecto
+## Project status
 
-| Fase | Estado | Qué incluye |
+| Phase | Status | Includes |
 |---|---|---|
-| Fase 0 — UI Kit | ✅ Completa | Design system, componentes base, scaffold |
-| Fase 1 — Flujos | ⏳ En curso | Pantallas reales conectadas al backend |
+| Phase 0 — UI Kit | ✅ Complete | Design system, base components, scaffold |
+| Phase 1 — Flows | ⏳ In progress | Real screens connected to the backend |
 
-Los archivos de `design-system/` y `standards/` corresponden a Fase 0 y están completos. Los archivos de `specs/` se van agregando al inicio de cada flujo de Fase 1.
+The files in `design-system/` and `standards/` belong to Phase 0 and are complete. The files in `specs/` are added at the start of each Phase 1 flow.
 
 ---
 
-## Cómo actualizar este repo
+## How to update this repo
 
-- **`design-system/`** — el diseñador actualiza después de cada sesión en Lovable. Si se crea un componente nuevo o se modifica uno existente, se documenta antes de cerrar la sesión.
-- **`standards/`** — cualquier cambio requiere acuerdo entre diseñador y developer. No se modifica unilateralmente durante la implementación.
-- **`specs/`** — el developer crea el archivo del flujo antes de la reunión de kick-off. El diseñador agrega los patrones que va a aplicar durante esa reunión.
-- **`README.md`** — se actualiza cuando cambia la estructura del repo o el estado de las fases.
+- **`design-system/`** — the designer updates after each Lovable session. If a new component is created or an existing one is modified, it must be documented before closing the session.
+- **`standards/`** — any change requires agreement between the designer and the developer. It is not modified unilaterally during implementation.
+- **`specs/`** — the developer creates the flow file before the kick-off meeting. The designer adds the patterns they will apply during that meeting.
+- **`README.md`** — updated when the repo structure or phase status changes.
